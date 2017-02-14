@@ -1,0 +1,69 @@
+#FONTOS: a beolvasandó sorban használandó formátum "paraméter= szám" (szóközzel a megfelelő helyen)
+
+#instanciák száma
+instanciak= 10000
+#legyártandó sejtek száma
+legyartando= 1024
+#szimuláció vége időegységekben
+ido= 400000
+#Rákos daganatnak könyveljük el a szimulációt, ha ennyivel nagyobb a rendszer mérete (vartosszes*rakosodas pl. 300*10...)
+rakosodas= 10
+#Megallítjuk a szimulációt, ha a rendszer mérete "STOP"-szorosa (a "STOP" lehet tört is...)
+STOP= 12
+#szintek száma
+szintszam= 10
+#osztódásokénti mutációk számának várható értéke
+mutrata= 1
+#s_acd
+s_acd= 0
+#s_scdd
+s_scdd= 0
+#s_scd
+s_scd= 0
+#béta
+B= 0
+#mutációk maximális száma egy sejtben
+maxMut= 0
+#legyen optimális a gamma? (y/n)
+flag_optimal= y
+#mutálódhat az őssejt? (y/n)
+flag_stemMut= y
+#Id kiiratas
+flag_idKiir= y
+#kimenő adatok mappa helye (teljes útvonal pl nekem ubuntun /home/mate/szakdolgozat/valami/), ha "default" akkor a saját mappába ment mint normálisan
+#egyenlőre a képeket nem tudja jó helyre rakni
+#készüljenek ábrák? (y/n)
+flag_gnuplot= n
+#delta, Nk, pk mátrix beolvasása
+matrix=
+0		1	0
+0.002		1	1
+0.004		1	1
+0.008		1	1
+0.016		1	1
+1.00E-010	1	1
+1.00E-009	1	1
+1.00E-008	1	1
+1.00E-007	1	1
+1.00E-006	1	1
+1.00E-005	1	1
+1.00E-004	1	1
+1.00E-003	1	1
+1.00E-002	1	1
+1.00E-001	1	1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
