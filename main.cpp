@@ -271,7 +271,7 @@ int main()
 
     vartosszes=0;
 
-    for(int i=0;i<szintszam;i++)
+    for(int i=0;i<szintszam+1;i++)
     {
         vartosszes+=szintek[i].Nk;
     }
@@ -555,19 +555,30 @@ sosszeg=(s_scd+s_scdd+s_acd);
     for(int i=0; i<szintszam;i++){
         szintRataSum.push_back(szintek[i].racd+szintek[i].rscd+szintek[i].rscdplusd);
     }
-
+    int rendszermeret = 0;
     gen=0;
     idosum=0;
-
-    while((legyartott_sejtek < legyartando && Nsum<STOP*vartosszes) || x[szintszam-1].size()==0 )
+    cout<<"Instancia: "<<instancia<<endl;
+    while((legyartott_sejtek < legyartando && Nsum<STOP*vartosszes) || x[szintszam].size()==0 )
     {
 
 
-    for(int i=0; i<szintszam;i++)
+    rendszermeret = 0;
+    for(int i=0; i<szintszam+1;i++)
+    {
+        rendszermeret += x[i].size();
+    }
+
+    if(gen%100==0){
+        cout<<"legyartott: "<<legyartott_sejtek <<" Rendszermeret: "<<rendszermeret<<endl;
+        cout<<"Nsum: "<<Nsum<<endl;
+    }
+
+    for(int i=0; i<szintszam+1;i++)
     {
         for(unsigned int j=0;j<x[i].size();j++)
         {
-            if(i==szintszam-1)
+            if(i==szintszam)
             {
                 x[i][j].racd=szintek[i].racd;
                 x[i][j].rscd=szintek[i].rscd*((1+B)*szintek[i].Nk)/(szintek[i].Nk+B*x[i].size());
@@ -635,7 +646,7 @@ sosszeg=(s_scd+s_scdd+s_acd);
 
         double melyik_esemeny;
         vector <lista> kommulativ_lista;
-        for(int j=0;j<szintszam+1;j++) //ráták felhalmozása
+        for(int j=0;j<szintszam;j++) //ráták felhalmozása
         {
 
             for( unsigned int l=0;l<x[j].size();l++)
@@ -862,7 +873,7 @@ sosszeg=(s_scd+s_scdd+s_acd);
         }
         else if(esemeny_tipus==1) //scdplusd
         {
-            if(esemeny_szintje!=szintszam-1)
+            if(esemeny_szintje!=(szintszam-1) && esemeny_szintje!=(szintszam))
             {
                 sejt ujsejt;
                 ujsejt.oszt_szam=x[esemeny_szintje][esemeny_sejtszama].oszt_szam;
@@ -1011,7 +1022,7 @@ sosszeg=(s_scd+s_scdd+s_acd);
         }
         else //acd
         {
-            if(esemeny_szintje!=(szintszam-1))
+            if(esemeny_szintje!=(szintszam-1) && esemeny_szintje!=(szintszam))
             {
                 idCounter++;
                 sejt ujsejt;
@@ -1338,10 +1349,10 @@ sosszeg=(s_scd+s_scdd+s_acd);
      p<<setw(12)<<sumnscdplusd;
      p<<setw(12)<<vartosszes;
      p<<setw(12)<<100*Nsum/vartosszes<<"%";
-     for(unsigned int j=0; j<x[szintszam-1].size();j++)
+     for(unsigned int j=0; j<x[szintszam].size();j++)
      {
-          Dn_atlagsum+=x[szintszam-1][j].oszt_szam;
-          Dnegyzetszum+=pow(x[szintszam-1][j].oszt_szam,2);
+          Dn_atlagsum+=x[szintszam][j].oszt_szam;
+          Dnegyzetszum+=pow(x[szintszam][j].oszt_szam,2);
      }
      D_natlag=Dn_atlagsum/x[szintszam-1].size();
      Dszum+=D_natlag;
@@ -1462,7 +1473,7 @@ if(flag_idKiir=='y'){
     id<<setw(15)<<"szint";
     id<<setw(15)<<"idopont";
     id<<endl;*/
-    for(int i=0;i<szintszam;i++){
+    for(int i=0;i<szintszam+1;i++){
         for(int j=0;j<x[i].size();j++){
             for(int k=0;k<x[i][j].historyVector.size();k++){
                /* id<<setw(15)<<x[i][j].id;
